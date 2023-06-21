@@ -3,3 +3,6 @@
 #   hello_world: Ola Mundo
 
 pt:
+  welcome: "Bem vindo ao <b>ChatGPT Open AI bot</b>\npara perguntar alguma coisa digite o comando\n\n<code>/ask type your question</code>"
+  choose_version: "<b>Selecione sua versão do ChatGPT</b>"
+  not_found: "<b>Desculpe</b>"
