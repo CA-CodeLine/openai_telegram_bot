@@ -39,3 +39,7 @@ or
 ```
 APP_ENV=development bundle exec rackup config.ru -o 0.0.0.0
 ```
+
+### Example of this working
+
+![poc](./tmp/poc.jpg)
