@@ -32,7 +32,6 @@ class BotService < ApplicationService
                    else
                      0 # TODO: fix to when this bot is on group
                    end
-    another_start_message if @callback_query.data.start_with?('start')
   end
 
   def messages_queries
@@ -44,23 +43,28 @@ class BotService < ApplicationService
                      0 # TODO: fix to when this bot is on group
                    end
     start_message if @message.text.start_with?('/start')
+    select_version if @message.text.start_with?('/ask')
   end
 
   # message queries
 
   def start_message
     message = t('welcome')
-    kb = [
-      Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Start Button', callback_data: 'start')
-    ]
-    markup = Telegram::Bot::Types::InlineKeyboardMarkup.new(inline_keyboard: kb)
-    @bot.send_message(chat_id: @message.chat.id, text: message, reply_markup: markup)
+    @bot.send_message(chat_id: @message.chat.id, text: message, parse_mode: 'HTML')
+  end
+
+  def select_version
+    message = t('choose_version')
+    @prompt = @message.text[5, @message.text.length - 1]
+
+    return unless @prompt
+
+    message = ChatGpt.new.ask(prompt: @prompt)
+    message = t('not_found') unless message && message != ''
+
+    @prompt = nil
+    @bot.send_message(chat_id: @message.chat.id, text: message, parse_mode: 'HTML')
   end
 
   # callback queries
-
-  def another_start_message
-    message = t('another_welcome')
-    @bot.send_message(chat_id: @message.chat.id, text: message)
-  end
 end

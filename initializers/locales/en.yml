@@ -3,5 +3,6 @@
 #   hello_world: Hello World
 
 en:
-  welcome: "Welcome to my template telegram bot\nplease click the start button"
-  another_welcome: "DONE! congrats! i hope you to enjoy my template"
+  welcome: "Welcome to <b>ChatGPT Open IA bot</b>\nto ask anything to AI model you just need to type\n<code>/ask type your question</code>"
+  choose_version: "<b>Select your ChatGPT version</b>"
+  not_found: "<b>Sorry</b>"

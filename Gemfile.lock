@@ -120,6 +120,7 @@ GEM
       descendants_tracker (~> 0.0, >= 0.0.3)
 
 PLATFORMS
+  arm64-darwin-22
   x86_64-darwin-19
   x86_64-linux-musl
 
